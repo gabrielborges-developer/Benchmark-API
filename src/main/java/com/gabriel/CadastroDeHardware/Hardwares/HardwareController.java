@@ -1,4 +1,4 @@
-package com.gabriel.CadastroDeHardware;
+package com.gabriel.CadastroDeHardware.Hardwares;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,6 +1,9 @@
-package com.gabriel.CadastroDeHardware;
+package com.gabriel.CadastroDeHardware.Hardwares;
 
+import com.gabriel.CadastroDeHardware.Benchmark.BenchmarkModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro")
@@ -9,14 +12,14 @@ public class HardwareModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String modelo;
     private String marca;
     private double preco;
     private TipoHardware tipo;
+    private List<BenchmarkModel> benchmarkModelList;
 
 
-    public HardwareModel(){
+    public HardwareModel() {
     }
 
     public HardwareModel(String modelo, String marca, double preco, TipoHardware tipo){

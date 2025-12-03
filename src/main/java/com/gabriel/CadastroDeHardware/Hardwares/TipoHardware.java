@@ -1,4 +1,4 @@
-package com.gabriel.CadastroDeHardware;
+package com.gabriel.CadastroDeHardware.Hardwares;
 
 public enum TipoHardware {
 
