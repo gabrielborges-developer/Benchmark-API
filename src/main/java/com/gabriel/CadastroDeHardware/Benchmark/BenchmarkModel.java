@@ -1,6 +1,9 @@
 package com.gabriel.CadastroDeHardware.Benchmark;
 
+import com.gabriel.CadastroDeHardware.Hardwares.HardwareModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_benchmarks")
@@ -13,6 +16,9 @@ public class BenchmarkModel {
     private int fpsMedio;
     private String presetGrafico;
     private Resolucao resolucao;
+
+    @OneToMany(mappedBy = "benchmark")
+    private List<HardwareModel> hardwares;
 
     public BenchmarkModel(){
     }
@@ -40,7 +46,6 @@ public class BenchmarkModel {
     public void setNomeSoftware(String nomeSoftware) {
         this.nomeSoftware = nomeSoftware;
     }
-
 
     public String getPresetGrafico() {
         return presetGrafico;

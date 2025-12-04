@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_cadastro")
+@Table(name = "tb_hardware")
 public class HardwareModel {
 
     @Id
@@ -16,7 +16,11 @@ public class HardwareModel {
     private String marca;
     private double preco;
     private TipoHardware tipo;
-    private List<BenchmarkModel> benchmarkModelList;
+
+
+    @ManyToOne
+    @JoinColumn(name = "benchmark_id")
+    private BenchmarkModel benchmark;
 
 
     public HardwareModel() {
