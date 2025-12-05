@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping
-public class HardwareController {
+public class SetupController {
 
 
     @GetMapping("/helloworld")

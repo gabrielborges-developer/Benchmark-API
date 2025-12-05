@@ -1,29 +1,28 @@
 package com.gabriel.CadastroDeHardware.Benchmark;
 
-import com.gabriel.CadastroDeHardware.Hardwares.HardwareModel;
+import com.gabriel.CadastroDeHardware.Hardwares.SetupEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Table(name = "tb_benchmarks")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class BenchmarkModel {
+public class BenchmarkEntity {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nomeSoftware;
-    private int fpsMedio;
-    private String presetGrafico;
-    private Resolucao resolucao;
+    private String softwareName;
+    private int fpsAvg;
+    private String graphicsPreset;
+    private Resolution resolution;
 
-    @OneToMany(mappedBy = "benchmark")
-    private List<HardwareModel> hardwares;
+   @ManyToOne
+   @JoinColumn(name = "setup_id")
+   private SetupEntity setup;
 
 }
