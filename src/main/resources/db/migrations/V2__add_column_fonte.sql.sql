@@ -1,0 +1,1 @@
+ALTER TABLE tb_setup ADD COLUMN fonte VARCHAR(255);
