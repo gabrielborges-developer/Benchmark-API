@@ -1,6 +1,6 @@
 package com.gabriel.CadastroDeHardware.Benchmark;
 
-import com.gabriel.CadastroDeHardware.Hardwares.SetupEntity;
+import com.gabriel.CadastroDeHardware.Setup.SetupEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

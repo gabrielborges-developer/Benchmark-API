@@ -1,4 +1,4 @@
-package com.gabriel.CadastroDeHardware.Hardwares;
+package com.gabriel.CadastroDeHardware.Setup;
 
 import com.gabriel.CadastroDeHardware.Benchmark.BenchmarkEntity;
 import jakarta.persistence.*;
