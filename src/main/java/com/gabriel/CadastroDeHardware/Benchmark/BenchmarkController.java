@@ -7,23 +7,23 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("benchmark")
 public class BenchmarkController {
 
-    @GetMapping("/listar")
+    @GetMapping("/listar-bench")
     public String listarBenchmark(){
         return "Benchmarks: ";
     }
 
-    @PostMapping("/criar")
+    @PostMapping("/criar-bench")
     public String criarBenchmark(){
         return "Benchmark criado com sucesso!";
     }
 
-    @PutMapping("/alterar")
+    @PutMapping("/alterar-bench")
     public String alterarBenchmark(){
         return "Benchamark alterado com sucesso!";
     }
 
-    @DeleteMapping("/deletar")
-    public String deletarBenchmark(){
+    @DeleteMapping("/deletar-bench")
+    public String deletarBenchmarkID(){
         return "Benchmark Deletado com sucesso!";
     }
 

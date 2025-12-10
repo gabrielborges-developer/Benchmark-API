@@ -10,10 +10,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "tb_setup")
-@NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class SetupEntity {
+
+    public SetupEntity() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

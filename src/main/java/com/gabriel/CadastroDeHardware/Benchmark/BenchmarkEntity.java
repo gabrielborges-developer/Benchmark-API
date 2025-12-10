@@ -1,5 +1,6 @@
 package com.gabriel.CadastroDeHardware.Benchmark;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gabriel.CadastroDeHardware.Setup.SetupEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,10 +9,11 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tb_benchmarks")
-@NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class BenchmarkEntity {
+
+    public BenchmarkEntity(){}
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
@@ -23,6 +25,7 @@ public class BenchmarkEntity {
 
    @ManyToOne
    @JoinColumn(name = "setup_id")
+   @JsonIgnore
    private SetupEntity setup;
 
 }
