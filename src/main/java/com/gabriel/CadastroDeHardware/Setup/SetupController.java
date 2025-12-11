@@ -16,29 +16,29 @@ public class SetupController {
         this.setupService =  setupService;
     }
 
-    @PostMapping
-    public SetupEntity createSetup(@RequestBody SetupEntity setup ){
-        return setupService.createSetup(setup);
-    }
-
     @GetMapping
     public List<SetupEntity> getAllSetups(){
-        return setupService.listAll();
+        return setupService.getAllSetupService();
+    }
+
+    @PostMapping
+    public SetupEntity createSetup(@RequestBody SetupEntity setup ){
+        return setupService.createSetupService(setup);
     }
 
     @GetMapping("/{id}")
     public SetupEntity getSetupById(@PathVariable Long id){
-        return setupService.listSetupById(id);
+        return setupService.listSetupServiceById(id);
     }
 
-    @PutMapping("/atualizar-setupID")
-    public String atualizarSetupId(){
-        return "Setup Atualizado";
+    @PutMapping("/{id}")
+    public SetupEntity updateSetupById(@PathVariable Long id, @RequestBody SetupEntity setup){
+        return setupService.updateSetupServiceById(id,setup);
     }
 
     @DeleteMapping("/{id}")
     public String deleteSetupById(@PathVariable Long id){
-        setupService.deleteSetupById(id);
+        setupService.deleteSetupByIdService(id);
         return  "Setup Deletado";
     }
 

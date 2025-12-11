@@ -3,28 +3,41 @@ package com.gabriel.CadastroDeHardware.Benchmark;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("benchmark")
+@RequestMapping("/benchs")
 public class BenchmarkController {
 
-    @GetMapping("/listar-bench")
-    public String listarBenchmark(){
-        return "Benchmarks: ";
+    private final BenchmarkService benchmarkService;
+
+    public BenchmarkController(BenchmarkService benchmarkService){
+        this.benchmarkService = benchmarkService;
     }
 
-    @PostMapping("/criar-bench")
-    public String criarBenchmark(){
-        return "Benchmark criado com sucesso!";
+    @GetMapping
+    public List<BenchmarkEntity> getAllBenchmark(){
+        return benchmarkService.getAllBenchmarkService();
     }
 
-    @PutMapping("/alterar-bench")
-    public String alterarBenchmark(){
-        return "Benchamark alterado com sucesso!";
+    @GetMapping("/{id}")
+    public BenchmarkEntity getBenchmarkById(@PathVariable Long id){
+        return benchmarkService.getBenchmarkServiceById(id);
     }
 
-    @DeleteMapping("/deletar-bench")
-    public String deletarBenchmarkID(){
-        return "Benchmark Deletado com sucesso!";
+    @PostMapping
+    public BenchmarkEntity createBenchmark(@RequestBody BenchmarkEntity benchmarkCreate){
+        return benchmarkService.createBenchmarkService(benchmarkCreate);
+    }
+
+    @PutMapping("{id}")
+    public BenchmarkEntity updateBenchmark (@PathVariable Long id,@RequestBody BenchmarkEntity benchmarkUpdate){
+        return benchmarkService.updateBenchmarkService(id,benchmarkUpdate);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBencharkById(@PathVariable Long id){
+         benchmarkService.deleteBenchmarkService(id);
     }
 
 }

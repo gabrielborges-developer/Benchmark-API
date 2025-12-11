@@ -4,6 +4,7 @@ package com.gabriel.CadastroDeHardware.Setup;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 public class SetupService {
 
 
-    private SetupRepository setupRepository;
+    private final SetupRepository setupRepository;
 
     public SetupService(SetupRepository setupRepository){
 
@@ -19,23 +20,31 @@ public class SetupService {
     }
 
 
-    public SetupEntity createSetup(SetupEntity setup){
-       return setupRepository.save(setup);
-    }
-
-    public List<SetupEntity> listAll(){
+    public List<SetupEntity> getAllSetupService(){
 
         return setupRepository.findAll();
     }
 
-    public SetupEntity listSetupById(Long id){
+    public SetupEntity createSetupService(SetupEntity setup){
+       return setupRepository.save(setup);
+    }
+
+    public SetupEntity listSetupServiceById(Long id){
 
         Optional<SetupEntity> setupServiceListOptional = setupRepository.findById(id);
 
         return setupServiceListOptional.orElse(null);
     }
 
-    public void deleteSetupById(Long id){
+    public SetupEntity updateSetupServiceById(Long id, SetupEntity setup){
+        if(setupRepository.existsById(id)){
+            setup.setId(id);
+            return setupRepository.save(setup);
+        }
+        return null;
+    }
+
+    public void deleteSetupByIdService(Long id){
 
        setupRepository.deleteById(id);
     }
