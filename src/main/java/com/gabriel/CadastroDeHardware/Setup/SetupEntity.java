@@ -3,9 +3,6 @@ package com.gabriel.CadastroDeHardware.Setup;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gabriel.CadastroDeHardware.Benchmark.BenchmarkEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -25,11 +22,12 @@ public class SetupEntity {
     @OneToMany(mappedBy = "setup")
     @JsonIgnore
     private List<BenchmarkEntity> benchmarkEntityList;
+    private String fonte;
 
 
     public SetupEntity() {}
 
-    public SetupEntity(Long id, String processor, String videoCard, String motherBoard, String memory, double price, List<BenchmarkEntity> benchmarkEntityList) {
+    public SetupEntity(Long id, String processor, String videoCard, String motherBoard, String memory, double price, List<BenchmarkEntity> benchmarkEntityList, String fonte) {
         this.id = id;
         this.processor = processor;
         this.videoCard = videoCard;
@@ -37,6 +35,7 @@ public class SetupEntity {
         this.memory = memory;
         this.price = price;
         this.benchmarkEntityList = benchmarkEntityList;
+        this.fonte = fonte;
     }
 
 
@@ -95,6 +94,14 @@ public class SetupEntity {
 
     public void setBenchmarkEntityList(List<BenchmarkEntity> benchmarkEntityList) {
         this.benchmarkEntityList = benchmarkEntityList;
+    }
+
+    public String getFonte(){
+        return fonte;
+    }
+
+    public void setFonte(String fonte){
+        this.fonte = fonte;
     }
 
 

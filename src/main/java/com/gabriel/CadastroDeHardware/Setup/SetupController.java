@@ -1,7 +1,9 @@
 package com.gabriel.CadastroDeHardware.Setup;
 import jakarta.websocket.server.PathParam;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.desktop.PreferencesEvent;
 import java.util.List;
 import java.util.Set;
 
@@ -12,18 +14,24 @@ public class SetupController {
 
     private SetupService setupService;
 
-    SetupController(SetupService setupService){
+    private SetupMapper setupMapper;
+
+    SetupController(SetupService setupService,SetupMapper setupMapper){
         this.setupService =  setupService;
+        this.setupMapper = setupMapper;
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public SetupDTO createSetup(@RequestBody SetupDTO setupDto ){
+        SetupEntity setupEntityRequest = setupMapper.toEntity(setupDto);
+        SetupEntity setupEntityResponse = setupService.createSetupService(setupEntityRequest);
+       return setupMapper.toDto(setupEntityResponse);
     }
 
     @GetMapping
     public List<SetupEntity> getAllSetups(){
         return setupService.getAllSetupService();
-    }
-
-    @PostMapping
-    public SetupEntity createSetup(@RequestBody SetupEntity setup ){
-        return setupService.createSetupService(setup);
     }
 
     @GetMapping("/{id}")

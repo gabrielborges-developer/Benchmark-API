@@ -14,27 +14,27 @@ public class SetupService {
 
     private final SetupRepository setupRepository;
 
-    public SetupService(SetupRepository setupRepository){
 
+    public SetupService(SetupRepository setupRepository){
         this.setupRepository = setupRepository;
+
+    }
+
+    public SetupEntity createSetupService(SetupEntity setupEntityRequest){
+       return setupRepository.save(setupEntityRequest);
     }
 
 
     public List<SetupEntity> getAllSetupService(){
-
         return setupRepository.findAll();
     }
 
-    public SetupEntity createSetupService(SetupEntity setup){
-       return setupRepository.save(setup);
-    }
 
     public SetupEntity listSetupServiceById(Long id){
-
         Optional<SetupEntity> setupServiceListOptional = setupRepository.findById(id);
-
         return setupServiceListOptional.orElse(null);
     }
+
 
     public SetupEntity updateSetupServiceById(Long id, SetupEntity setup){
         if(setupRepository.existsById(id)){
@@ -44,8 +44,8 @@ public class SetupService {
         return null;
     }
 
-    public void deleteSetupByIdService(Long id){
 
+    public void deleteSetupByIdService(Long id){
        setupRepository.deleteById(id);
     }
 
