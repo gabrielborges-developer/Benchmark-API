@@ -30,7 +30,7 @@ public class SetupService {
     }
 
 
-    public SetupEntity listSetupServiceById(Long id){
+    public SetupEntity getSetupServiceById(Long id){
         Optional<SetupEntity> setupServiceListOptional = setupRepository.findById(id);
         return setupServiceListOptional.orElse(null);
     }

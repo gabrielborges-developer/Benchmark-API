@@ -30,18 +30,24 @@ public class SetupController {
     }
 
     @GetMapping
-    public List<SetupEntity> getAllSetups(){
-        return setupService.getAllSetupService();
+    public List<SetupDTO> getAllSetups(){
+        List<SetupEntity> entities = setupService.getAllSetupService();
+        return entities.stream()
+                .map(setupMapper::toDto)
+                .toList();
     }
 
     @GetMapping("/{id}")
-    public SetupEntity getSetupById(@PathVariable Long id){
-        return setupService.listSetupServiceById(id);
+    public SetupDTO getSetupById(@PathVariable Long id){
+        SetupEntity setupEntityResponse = setupService.getSetupServiceById(id);
+        return setupMapper.toDto(setupEntityResponse);
     }
 
     @PutMapping("/{id}")
-    public SetupEntity updateSetupById(@PathVariable Long id, @RequestBody SetupEntity setup){
-        return setupService.updateSetupServiceById(id,setup);
+    public SetupDTO updateSetupById(@PathVariable Long id, @RequestBody SetupDTO setup){
+       SetupEntity setupEntityRequest = setupMapper.toEntity(setup);
+       SetupEntity entitySetupResponse = setupService.updateSetupServiceById(id,setupEntityRequest);
+        return setupMapper.toDto(entitySetupResponse);
     }
 
     @DeleteMapping("/{id}")
