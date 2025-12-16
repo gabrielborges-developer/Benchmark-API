@@ -20,8 +20,8 @@ public class SetupService {
 
     }
 
-    public SetupEntity createSetupService(SetupEntity setupEntityRequest){
-       return setupRepository.save(setupEntityRequest);
+    public SetupEntity createSetupService(SetupEntity setupEntity){
+       return setupRepository.save(setupEntity);
     }
 
 
